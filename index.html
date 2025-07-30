@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishita - Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEkyJx1o5L1RQ4V8gT8GsJbYlB+4O4NfZ9v4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            font-size: 18px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: #50abc0;
+            transition: 0.4s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 10%;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-in-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #50abc0;
+            text-shadow: 0px 0px 8px rgba(80, 171, 192, 0.6);
+        }
+
+        /* Home Section */
+        .firstSection {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .leftSection {
+            width: 50%;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .leftSection h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .purple {
+            color: #50abc0;
+            text-shadow: 0px 0px 12px rgba(80, 171, 192, 0.8);
+        }
+
+        .leftSection h2 {
+            font-size: 1.8rem;
+            margin-top: 10px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: rgba(80, 171, 192, 0.8);
+            color: black;
+            border: none;
+            border-radius: 40px;
+            margin-right: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            box-shadow: 0 0 12px rgba(80, 171, 192, 0.6);
+        }
+
+        .btn:hover {
+            background: #78b8c7;
+            transform: scale(1.08);
+            box-shadow: 0 0 20px rgba(80, 171, 192, 0.9);
+        }
+
+        .rightSection img {
+            width: 380px;
+            max-width: 100%;
+            filter: drop-shadow(0 0 15px rgba(80, 171, 192, 0.8));
+            animation: float 4s infinite ease-in-out;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Glass Cards */
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 15px;
+            padding: 25px;
+            width: 270px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 0 20px rgba(80, 171, 192, 0.4);
+        }
+
+        .card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            object-fit: contain;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card h3 {
+            color: #78b8c7;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: left;
+        }
+
+        .contact-box label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 16px;
+        }
+
+        .contact-box input,
+        .contact-box textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .contact-box button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 30px;
+            background: #50abc0;
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact-box button:hover {
+            background: #78b8c7;
+            box-shadow: 0 0 12px rgba(80, 171, 192, 0.7);
+        }
+
+        /* Social Icons */
+        .social-icons {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 28px;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #50abc0;
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.05);
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            color: gray;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* 🔥 RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .leftSection h1 {
+                font-size: 2.5rem;
+            }
+
+            .leftSection h2 {
+                font-size: 1.5rem;
+            }
+
+            .card img {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            .firstSection {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .leftSection {
+                width: 100%;
+                text-align: center;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .card img {
+                width: 65px;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .leftSection h1 {
+                font-size: 2rem;
+            }
+
+            .leftSection h2 {
+                font-size: 1.2rem;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .card img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo"><img src="logo.png" alt=""> Ishita</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="firstSection">
+        <div class="leftSection">
+            <h1>Hi, I'm <span class="purple">Ishita</span></h1>
+            <h2>A passionate <span id="element"></span></h2>
+            <div class="buttons">
+                <!-- <a href="resume.pdf" target="_blank"><button class="btn">📄 Download Resume</button></a> -->
+                <a href="https://github.com/ISHITA172004" target="_blank"><button class="btn">💻 Visit
+                        GitHub</button></a>
+            </div>
+        </div>
+        <div class="rightSection">
+            <img src="newimg.png" alt="Ishita Image">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a web developer and aspiring data scientist, passionate about building modern, responsive, and
+            user-friendly web applications. I specialize in writing clean, maintainable code and designing creative,
+            visually appealing interfaces. With a growing expertise in Python, machine learning, and data analysis, I
+            aim to integrate intelligent data-driven solutions into seamless web experiences.</p>
+    </section>
+
+    <!-- Work Experience -->
+    <!-- Work Experience -->
+<section>
+    <h2>Work Experience</h2>
+    <div class="card-container">
+
+        <!-- Programmer -->
+        <div class="card">
+            <img src="programmer.png">
+            <h3>Programmer</h3>
+            <p>Developed efficient algorithms and clean, reusable code for various projects.</p>
+            <p>Worked with C, Python, and JavaScript to solve real-world programming challenges.</p>
+        </div>
+
+        <!-- Full-Stack Developer -->
+        <div class="card">
+            <img src="full-stack.png">
+            <h3>Full-Stack Developer</h3>
+            <p><strong>Frontend:</strong> Built responsive UIs using HTML, CSS, and JavaScript with optimized performance.</p>
+            <p><strong>Backend:</strong> Integrated RESTful APIs and deployed scalable applications using Flask.</p>
+            <p><strong>Database:</strong> Designed and managed MySQL databases, wrote optimized queries, and ensured data security.</p>
+        </div>
+
+        <!-- Machine Learning Enthusiast -->
+        <div class="card">
+            <img src="ml.png">
+            <h3>Machine Learning Enthusiast</h3>
+            <p>Developed predictive models using Python, Pandas, and Scikit-learn.</p>
+            <p>Built end-to-end ML pipelines, including data preprocessing and model deployment with Flask.</p>
+        </div>
+          <div class="card">
+            <img src="image.png">
+            <h3>DBMS & Database Management</h3>
+            <p>Experienced in relational database design, normalization, and query optimization.</p>
+            <p>Worked with MySQL, PostgreSQL, and SQLite for secure and efficient data handling.</p>
+            <p>Implemented stored procedures, joins, and indexing for optimized performance.</p>
+            <p>Integrated databases with backend APIs to build dynamic and data-driven web apps.</p>
+        </div>
+    </div>
+</section>
+
+
+       
+
+  <!-- Projects -->
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="card-container">
+
+      <!-- Portfolio Website -->
+<div class="card">
+    <h3>🌐 Portfolio Website</h3>
+    <p>A sleek, responsive personal portfolio built using HTML, CSS, and JavaScript to showcase skills and projects.</p>
+    <p><strong>Features:</strong> Animated sections, smooth scrolling, and a contact form.</p>
+    <p>
+    
+        <a href="https://github.com/ISHITA172004/portfolio-template" target="_blank" style="color:#50abc0; text-decoration:none;">🔗 GitHub</a>
+    </p>
+</div>
+
+
+        <!-- ML Predictor -->
+<div class="card">
+    <h3>🤖 ML Predictor</h3>
+    <p>A Flask-based machine learning web application for predictive analytics using Scikit-learn models.</p>
+    <p><strong>Tech Stack:</strong> Python, Flask, Pandas, Scikit-learn.</p>
+    <p>
+        <a href="https://birth-weight-predictor-2-u3li.onrender.com" target="_blank" style="color:#50abc0; text-decoration:none;">🚀 View Live</a> | 
+        <a href="https://github.com/ISHITA172004/ml-predictor" target="_blank" style="color:#50abc0; text-decoration:none;">🔗 GitHub</a>
+    </p>
+</div>
+
+
+        <!-- GitHub Repositories -->
+        <div class="card">
+            <h3>📂 GitHub Repositories</h3>
+            <p>A collection of my coding projects, including web development, data science, and machine learning scripts.</p>
+            <p><a href="https://github.com/ISHITA172004" target="_blank" style="color:#50abc0; text-decoration:none;">🔗 View on GitHub</a></p>
+        </div>
+
+    </div>
+</section> <!-- ✅ Properly closed projects section -->
+
+<!-- Contact Form -->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <p style="margin-bottom: 20px; font-size: 16px; color: #ddd;">
+        Have a project or want to collaborate? Feel free to reach out!
+    </p>
+    
+    <div class="contact-box">
+        <form>
+            <div style="display: flex; gap: 15px;">
+                <div style="flex: 1;">
+                    <label>Name</label>
+                    <input type="text" placeholder="Enter your name" required>
+                </div>
+                <div style="flex: 1;">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+            </div>
+            
+            <label>Subject</label>
+            <input type="text" placeholder="Enter subject" required>
+            
+            <label>Message</label>
+            <textarea rows="4" placeholder="Write your message..." required></textarea>
+            
+            <button type="submit">📨 Send Message</button>
+        </form>
+    </div>
+
+
+<!-- Social Icons -->
+<div class="social-icons">
+    <p>Connect with me:</p>
+    <a href="https://github.com/ISHITA172004" target="_blank" title="GitHub">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 .297C5.373.297 0 5.67 0 12.297c0 5.289 3.438 9.773 8.205 11.365.6.111.82-.261.82-.58v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.547-1.39-1.336-1.76-1.336-1.76-1.09-.744.082-.729.082-.729 1.205.084 1.84 1.238 1.84 1.238 1.07 1.834 2.809 1.304 3.495.997.107-.775.418-1.305.762-1.606-2.665-.305-5.466-1.333-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.527.118-3.176 0 0 1.008-.322 3.301 1.23a11.44 11.44 0 013.003-.404c1.018.005 2.044.138 3.003.404 2.293-1.552 3.3-1.23 3.3-1.23.656 1.649.244 2.873.12 3.176.77.84 1.236 1.911 1.236 3.221 0 4.61-2.807 5.623-5.479 5.921.43.37.815 1.103.815 2.222v3.293c0 .322.216.695.825.577C20.565 22.066 24 17.582 24 12.297 24 5.67 18.627.297 12 .297z"/>
+        </svg>
+    </a>
+    <a href="https://linkedin.com/in/ishita-das-1106512b7" target="_blank" title="LinkedIn">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.728v20.543C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.728C24 .774 23.2 0 22.225 0zM7.08 20.452H3.542V9.037H7.08v11.415zM5.311 7.625c-1.135 0-2.057-.928-2.057-2.071 0-1.145.922-2.073 2.057-2.073 1.135 0 2.058.928 2.058 2.073-.001 1.143-.923 2.071-2.058 2.071zM20.452 20.452h-3.537v-5.544c0-1.321-.025-3.021-1.84-3.021-1.843 0-2.126 1.439-2.126 2.924v5.641H9.412V9.037h3.397v1.561h.048c.474-.896 1.632-1.84 3.357-1.84 3.59 0 4.248 2.362 4.248 5.432v6.262z"/>
+        </svg>
+    </a>
+    <a href="mailto:dasishita614@gmail.com" title="Email">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.104.897 2 2 2h16c1.103 0 2-.896 2-2V6c0-1.103-.897-2-2-2zM20 8l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+    </a>
+</div>
+
+
+
+</section>
+
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 Ishita's Portfolio | All rights reserved</p>
+</footer>
+
+
+    <!-- Typed.js -->
+   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+    var typed = new Typed('#element', {
+        strings: ['Web Developer', 'Coder', 'Python Developer', 'ML Enthusiast'],
+        typeSpeed: 50,
+        backSpeed: 30,
+        loop: true
+    });
+
+    // Scroll animation
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+        sections.forEach(sec => {
+            const rect = sec.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) sec.classList.add('visible');
+        });
+    });
+</script>
+
+</body>
+
+</html>
